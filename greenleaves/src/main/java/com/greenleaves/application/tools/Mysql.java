@@ -52,6 +52,7 @@ public class Mysql {
 	public Object queryOne(String sql, RowMapper<?> rm, Object[] data) {
 		init();
 		Object res = jdbcTemplate.queryForObject(sql, rm, data);
+		//Member m = (Member) mysql.queryOne("select * from gl_member where membername = ?", new BeanPropertyRowMapper<Member>(Member.class), new Object[] {cookie});
 		return res;
 	}
 	

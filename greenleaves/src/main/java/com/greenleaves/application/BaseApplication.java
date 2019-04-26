@@ -1,18 +1,61 @@
 package com.greenleaves.application;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.greenleaves.application.tools.Mysql;
 
-@EnableAutoConfiguration
 @SpringBootApplication
+@EnableAutoConfiguration
 @Controller
+@CrossOrigin("http://localhost:3000")
 public class BaseApplication {
 
 	@Autowired
-	protected Mysql mysql;
+	public Mysql mysql;
+	
+	private IndexApplication indexApp;
+	private MemberApplication memberApp;
+	
+	
+	/***************************** Index *****************************/
+	
+	@RequestMapping("/")
+    @ResponseBody
+    public String index() {
+		indexApp = new IndexApplication();
+        return indexApp.index();
+    }
+	
+	
+	/***************************** Member *****************************/
+	
+	@RequestMapping(value = "/member/read", method = RequestMethod.POST)
+    @ResponseBody
+    public String memberRead(String cookie) {
+		memberApp = new MemberApplication(mysql);
+        return memberApp.read(cookie);
+    }
+	
+	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
+    @ResponseBody
+    public String memberLogin(String name, String password) {
+		memberApp = new MemberApplication(mysql);
+        return memberApp.login(name, password);
+    }
+	
+	
+	/***************************** Run *****************************/
+	
+	public static void main(String[] args) {
+		SpringApplication.run(BaseApplication.class, args);
+	}
 	
 }
