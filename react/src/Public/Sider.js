@@ -23,7 +23,7 @@ class Sider extends React.Component {
                     name: "Schedule",
                     url: Utils.url('schedule-show'),
                     icon: 'fa-calendar',
-                    group: ['coordinator'],
+                    group: ['coordinator','student','supervisor','opponent','reader'],
                     subShow: false,
                     sub: []
                 },
@@ -35,19 +35,29 @@ class Sider extends React.Component {
                     subShow: false,
                     sub: [
                         {
-                            name: "Member List",
-                            url: Utils.url('member-list'),
+                            name: "Student List",
+                            url: Utils.url('student-list'),
                             group: ['coordinator', 'supervisor']
                         },
                         {
-                            name: "Member Edit",
-                            url: Utils.url('member-edit'),
-                            group: groups
+                            name: "Supervisor List",
+                            url: Utils.url('supervisor-list'),
+                            group: ['coordinator', 'supervisor','student']
+                        },
+                        {
+                            name: "Opponent List",
+                            url: Utils.url('oppoent-list'),
+                            group: ['coordinator', 'student','opponent']
+                        },
+                        {
+                            name: "Reader List",
+                            url: Utils.url('reader-list'),
+                            group: ['coordinator', 'reader']
                         }
                     ]
                 },
                 {
-                    name: "Manage Description",
+                    name: "Project Description",
                     url: 'javascript:;',
                     icon: 'fa-audio-description',
                     group: ['student', 'coordinator'],
@@ -56,17 +66,17 @@ class Sider extends React.Component {
                         {
                             name: "Submit Description",
                             url: Utils.url('description-submit'),
-                            group: ['student', 'supervisor']
+                            group: ['student', 'supervisor','coordinator']
                         },
                         {
                             name: "Manage Description",
                             url: Utils.url('description-manage'),
-                            group: ['student', 'supervisor']
+                            group: ['student', 'supervisor','coordinator']
                         }
                     ]
                 },
                 {
-                    name: "Manage Project Plan",
+                    name: "Project Plan",
                     url: 'javascript:;',
                     icon: 'fa-file',
                     group: ['student', 'supervisor', 'coordinator'],
@@ -79,6 +89,25 @@ class Sider extends React.Component {
                         },
                         {
                             name: "Manage Project Plan",
+                            url: Utils.url('projectplan-manage'),
+                            group: ['student', 'supervisor', 'coordinator']
+                        }
+                    ]
+                },
+                {
+                    name: "Project Report",
+                    url: 'javascript:;',
+                    icon: 'fa-file',
+                    group: ['student', 'supervisor', 'coordinator'],
+                    subShow: false,
+                    sub: [
+                        {
+                            name: "Submit Project Report",
+                            url: Utils.url('projectplan-submit'),
+                            group: ['student', 'supervisor', 'coordinator']
+                        },
+                        {
+                            name: "Manage Project Report",
                             url: Utils.url('projectplan-manage'),
                             group: ['student', 'supervisor', 'coordinator']
                         }

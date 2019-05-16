@@ -7,11 +7,13 @@ import Utils from './utils';
 import IndexShow from './Index/Show';
 import MemberLogin from './Member/Login';
 import MemberLogout from './Member/Logout';
-
+import DescriptionSubmit from './Description/Submit';
+import ManageDescription from './Description/Manage';
+import ProjectPlanSubmit from './Plan/Submit';
+import ProjectPlanManage from './Plan/Manage';
 import 'bootstrap/dist/css/bootstrap.css';
 import './Asset/Css/icon.css'
 import './index.css';
-
 ReactDOM.render((
     <BrowserRouter>
         <div>
@@ -19,6 +21,10 @@ ReactDOM.render((
             <Route exact path={Utils.url('index-show')} component={IndexShow}></Route>
             <Route excat path={Utils.url('member-login')} component={MemberLogin}></Route>
             <Route excat path={Utils.url('member-logout')} component={MemberLogout}></Route>
+            <Route excat path={Utils.url('description-submit')} component={DescriptionSubmit}></Route>
+            <Route excat path={Utils.url('description-manage')} component={ManageDescription}></Route>
+            <Route excat path={Utils.url('projectplan-submit')} component={ProjectPlanSubmit}></Route>
+            <Route excat path={Utils.url('projectplan-manage')} component={ProjectPlanManage}></Route>
         </div>
     </BrowserRouter>
 ), document.getElementById('root'));
