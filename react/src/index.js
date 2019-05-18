@@ -11,6 +11,8 @@ import DescriptionSubmit from './Description/Submit';
 import ManageDescription from './Description/Manage';
 import ProjectPlanSubmit from './Plan/Submit';
 import ProjectPlanManage from './Plan/Manage';
+import ProjectReportSubmit from './Report/Submit';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import './Asset/Css/icon.css'
 import './index.css';
@@ -25,6 +27,7 @@ ReactDOM.render((
             <Route excat path={Utils.url('description-manage')} component={ManageDescription}></Route>
             <Route excat path={Utils.url('projectplan-submit')} component={ProjectPlanSubmit}></Route>
             <Route excat path={Utils.url('projectplan-manage')} component={ProjectPlanManage}></Route>
+            <Route excat path={Utils.url('projectreport-submit')} component={ProjectReportSubmit}></Route>
         </div>
     </BrowserRouter>
 ), document.getElementById('root'));

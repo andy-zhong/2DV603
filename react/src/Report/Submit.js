@@ -11,7 +11,7 @@ class Submit extends React.Component {
 
     constructor(props){
         super(props);
-        document.title = 'Description Submit';
+        document.title = 'Project Report Submit';
         let $this = this;
         $this.state = {
             file: null,
@@ -30,7 +30,7 @@ class Submit extends React.Component {
         if(window.confirm('Confirm to submit?')){
             const formData = new FormData();
             formData.append('file', this.state.file);
-            formData.append('type', 'description');
+            formData.append('type', 'projectReport');
             formData.append('member', Utils.getLoginCookie());
             formData.append('sid', '');
             Utils.upload(Config.requestUrl+'submit', formData, function(res){
@@ -53,8 +53,8 @@ class Submit extends React.Component {
         let member = this.state.member;
         return (
             <div>
-                <Sider member={member} active1="Project Description" active2="Submit Description"></Sider>
-                <Header title1="Project Description" title2="Submit Description"></Header>
+                <Sider member={member} active1="Project Report" active2="Submit Project Report"></Sider>
+                <Header title1="Project Report" title2="Submit Project Report"></Header>
 
                 <div className="wrap">
 

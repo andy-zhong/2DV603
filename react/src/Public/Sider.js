@@ -103,12 +103,12 @@ class Sider extends React.Component {
                     sub: [
                         {
                             name: "Submit Project Report",
-                            url: Utils.url('projectplan-submit'),
+                            url: Utils.url('projectreport-submit'),
                             group: ['student', 'supervisor', 'coordinator']
                         },
                         {
                             name: "Manage Project Report",
-                            url: Utils.url('projectplan-manage'),
+                            url: Utils.url('projectreport-manage'),
                             group: ['student', 'supervisor', 'coordinator']
                         }
                     ]

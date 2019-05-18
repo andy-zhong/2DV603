@@ -35,6 +35,23 @@ utils.request = function(url, body, success, fail){
     });
 }
 
+utils.upload = function(url, body, success, fail){
+    fetch(url, {
+        method: "POST",
+        mode: "cors",
+        body: body,
+        headers: {
+
+        },
+    }).then(res=>res.text()).then(data=>{
+        data = data ? JSON.parse(data) : null;
+        if(data) {
+            if(data.code===1 && success) success(data.message);
+            if(data.code===0 && fail) fail(data.message);
+        }
+    });
+}
+
 utils.checkMember = function(callback){
     let $this = this;
     let c = this.getLoginCookie();
