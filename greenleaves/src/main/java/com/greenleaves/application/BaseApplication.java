@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.greenleaves.application.tools.Mysql;
 
@@ -23,6 +25,7 @@ public class BaseApplication {
 	
 	private IndexApplication indexApp;
 	private MemberApplication memberApp;
+	private SubmissionApplication submissionApp;
 	
 	
 	/***************************** Index *****************************/
@@ -49,6 +52,16 @@ public class BaseApplication {
     public String memberLogin(String name, String password) {
 		memberApp = new MemberApplication(mysql);
         return memberApp.login(name, password);
+    }
+	
+	
+	/***************************** Member *****************************/
+	
+	@RequestMapping(value = "/submit", method = RequestMethod.POST)
+    @ResponseBody
+    public String submit(@RequestParam("file") MultipartFile file, String type, String member, String sid) {
+		submissionApp = new SubmissionApplication(mysql);
+		return submissionApp.submit(file, type, member, sid);
     }
 	
 	
