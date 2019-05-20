@@ -58,6 +58,33 @@ class Submit extends React.Component {
 
                 <div className="wrap">
 
+                    <table className="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Submission</th>
+                            <th>Project report</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Submission status</td>
+                            <td>Submitted for grading/Not submit</td>
+                        </tr>
+                        <tr>
+                            <td>Deadline</td>
+                            <td>日期时间</td>
+                        </tr>
+                        <tr>
+                            <td>Last modified</td>
+                            <td>记录最后一次提交的时间</td>
+                        </tr>
+                        <tr>
+                            <td>Grading status</td>
+                            <td>分数／Not graded</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
                     <input type="file" className="form-control" placeholder="Choose your file" name="file" onChange={this.fileSelect} />
                     <button className="btn btn-primary" onClick={this.submit}>Submit</button>
                 </div>
