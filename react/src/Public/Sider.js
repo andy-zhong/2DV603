@@ -46,7 +46,7 @@ class Sider extends React.Component {
                         },
                         {
                             name: "Opponent List",
-                            url: Utils.url('oppoent-list'),
+                            url: Utils.url('opponent-list'),
                             group: ['coordinator', 'student','opponent']
                         },
                         {
