@@ -1,0 +1,107 @@
+a:hover {
+    text-decoration: none !important;
+}
+
+.sider {
+    background: #1d2127;
+    box-shadow: -5px 0 0 #2f3139 inset;
+    color: #777777;
+    width: 300px;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.sider .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sider .top .logo {
+    width: 150px;
+}
+.sider .top .fa-bars {
+    font-size: 18px;
+    cursor: pointer;
+    display: block;
+    width: 73px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #171717;
+}
+.sider .top .fa-bars:hover {
+    color: #3498db;
+}
+
+.sider .menu .item .content {
+    display: flex;
+    justify-content: space-between;
+    border-left: 2px solid #1d2127;
+    align-items: center;
+    padding: 15px 25px;
+    font-size: 13px;
+    color: #abb4be;
+    cursor: pointer;
+    flex-wrap: wrap;
+}
+.sider .menu .item .content:hover {
+    background: #212F3D;
+}
+.sider .menu .item .content.active {
+    border-left: 2px solid #3498db;
+}
+.sider .menu .item .first {
+    width: 21px;
+    font-size: 18px;
+}
+.sider .menu .item .text {
+    width: 205px;
+}
+.sider .menu .item .hide {
+    visibility: hidden;
+}
+.sider .menu .item .subMenu{
+    width: 300px;
+    font-size: 13px;
+    color: #abb4be;
+    transition: display 0.3s 0.1s ease-out;
+    display: none;
+}
+.sider .menu .item .subMenu.show {
+    display: block;
+}
+.sider .menu .item .subMenu .subItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    color: #abb4be;
+}
+.sider .menu .item .subMenu .subItem:hover {
+    background: #212F3D;
+}
+::-webkit-scrollbar
+{
+    width:11px;
+    height:16px;
+    background-color:#F5F5F5;
+}
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius:9px;
+    background-color:#F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    border-radius:9px;
+    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);
+    background-color:#979A9A;
+}
