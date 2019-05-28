@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50635
 File Encoding         : 65001
 
-Date: 2019-05-18 21:17:04
+Date: 2019-05-28 19:11:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -64,23 +64,6 @@ INSERT INTO `gl_member` VALUES ('10', 'andy-zhong', 'e10adc3949ba59abbe56e057f20
 INSERT INTO `gl_member` VALUES ('11', 'sz222cu', 'e10adc3949ba59abbe56e057f20f883e', '3', 'Hailing Zhang', '1555777597');
 
 -- ----------------------------
--- Table structure for `gl_schedule`
--- ----------------------------
-DROP TABLE IF EXISTS `gl_schedule`;
-CREATE TABLE `gl_schedule` (
-  `id` int(9) NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) NOT NULL,
-  `content` text NOT NULL,
-  `startTime` int(11) NOT NULL,
-  `endTime` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of gl_schedule
--- ----------------------------
-
--- ----------------------------
 -- Table structure for `gl_submission`
 -- ----------------------------
 DROP TABLE IF EXISTS `gl_submission`;
@@ -120,3 +103,20 @@ CREATE TABLE `gl_submission_type` (
 INSERT INTO `gl_submission_type` VALUES ('1', 'Description', 'description');
 INSERT INTO `gl_submission_type` VALUES ('2', 'Project Plan', 'projectPlan');
 INSERT INTO `gl_submission_type` VALUES ('3', 'Project Report', 'projectReport');
+
+-- ----------------------------
+-- Table structure for `gl_schedule`
+-- ----------------------------
+DROP TABLE IF EXISTS `gl_schedule`;
+CREATE TABLE `gl_schedule` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `startTime` date NOT NULL,
+  `endTime` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of gl_schedule
+-- ----------------------------
+INSERT INTO `gl_schedule` VALUES ('1', 'test', '2019-05-26', '2019-05-28');
