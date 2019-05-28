@@ -4,7 +4,7 @@ public class Schedule {
 
 	private int id;
 	private String title;
-	private String content;
+//	private String content;
 	private int startTime;
 	private int endTime;
 	
@@ -24,13 +24,13 @@ public class Schedule {
 		this.title = title;
 	}
 	
-	public String getContent() {
-		return content;
-	}
+//	public String getContent() {
+//		return content;
+//	}
 	
-	public void setContent(String content) {
-		this.content = content;
-	}
+//	public void setContent(String content) {
+//		this.content = content;
+//	}
 	
 	public int getStartTime() {
 		return startTime;
@@ -52,7 +52,7 @@ public class Schedule {
 		String str = "{";
 		str += "\"id\":"+id+",";
 		str += "\"title\":\""+title+"\",";
-		str += "\"content\":\""+content+"\",";
+		//str += "\"content\":\""+content+"\",";  not neccessary
 		str += "\"startTime\":"+startTime+",";
 		str += "\"endTime\":"+endTime;
 		str += "}";
