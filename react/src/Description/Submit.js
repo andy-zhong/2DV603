@@ -72,15 +72,15 @@ class Submit extends React.Component {
                         </tr>
                         <tr>
                             <td>Deadline</td>
-                            <td>日期时间</td>
+                            <td>date</td>
                         </tr>
                         <tr>
                             <td>Last modified</td>
-                            <td>记录最后一次提交的时间</td>
+                            <td>detail time when last submission</td>
                         </tr>
                         <tr>
                             <td>Grading status</td>
-                            <td>分数／Not graded</td>
+                            <td>A/B/C/D/E/F／Not graded</td>
                         </tr>
                         </tbody>
                     </table>

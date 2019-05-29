@@ -12,6 +12,7 @@ import ManageDescription from './Description/Manage';
 import ProjectPlanSubmit from './Plan/Submit';
 import ProjectPlanManage from './Plan/Manage';
 import ProjectReportSubmit from './Report/Submit';
+import ProjectReportManage from './Report/Manage';
 import StudentList from './Student/List';
 import SupervisorList from './Supervisor/List';
 import OpponentList from './Opponent/List';
@@ -32,6 +33,7 @@ ReactDOM.render((
             <Route excat path={Utils.url('projectplan-submit')} component={ProjectPlanSubmit}></Route>
             <Route excat path={Utils.url('projectplan-manage')} component={ProjectPlanManage}></Route>
             <Route excat path={Utils.url('projectreport-submit')} component={ProjectReportSubmit}></Route>
+            <Route excat path={Utils.url('projectreport-manage')} component={ProjectReportManage}></Route>
             <Route excat path={Utils.url('student-list')} component={StudentList}></Route>
             <Route excat path={Utils.url('supervisor-list')} component={SupervisorList}></Route>
             <Route excat path={Utils.url('opponent-list')} component={OpponentList}></Route>

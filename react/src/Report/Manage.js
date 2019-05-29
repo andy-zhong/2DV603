@@ -26,8 +26,8 @@ class Manage extends React.Component {
         let member = this.state.member;
         return (
             <div>
-                <Sider member={member} active1="Project Plan" active2="Manage Project Plan"></Sider>
-                <Header title1="Project Plan" title2="Manage Project Plan"></Header>
+                <Sider member={member} active1="Project Report" active2="Manage Project Report"></Sider>
+                <Header title1="Project Report" title2="Manage Project Report"></Header>
 
                 <div className="wrap">
                     <h4>Hi, {member.realName} ({member.groupObj.name})</h4>
