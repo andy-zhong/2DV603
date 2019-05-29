@@ -27,7 +27,7 @@ public class SubmissionController extends BaseController {
 		MemberController mc = new MemberController(mysql);
 		// Check authority
 		int memberId = mc.memberDecrypt(memberCookie);
-		if(memberId==-1) return "Invalid member";
+		if(memberId==-1) return "Invalid memberHahahaha";
 		Member member = mc.memberRead(memberId);
 		if(member==null || !member.getGroupObj().getType().equals("student")) return "Invalid member";
 		// Check type
@@ -107,6 +107,35 @@ public class SubmissionController extends BaseController {
     	}
 		return s;
 	}
+	
+	public boolean hasPD(int studentId) {
+		List<Submission> submissions = submissionFind(" where mid = ? and type = ?", new Object[] {studentId, 1});
+		if (submissions == null || submissions.size() == 0)
+			return false;
+		
+		else
+			return true;
+	}
+	
+	public boolean hasPP(int studentId) {
+		List<Submission> submissions = submissionFind(" where mid = ? and type = ?", new Object[] {studentId, 2});
+		if (submissions == null || submissions.size() == 0)
+			return false;
+		
+		else
+			return true;
+	}
+	
+	public boolean hasReport(int studentId) {
+		List<Submission> submissions = submissionFind(" where mid = ? and type = ?", new Object[] {studentId, 3});
+		if (submissions == null || submissions.size() == 0)
+			return false;
+		
+		else
+			return true;
+	}
+	
+	
 	
 	// Create Submission
 	public void create(int memberId, int supervisorId, int type, String attachPath) {

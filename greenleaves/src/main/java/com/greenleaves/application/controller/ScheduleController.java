@@ -8,17 +8,17 @@ public class ScheduleController extends BaseController {
 
 	public ScheduleController(Mysql mysql) {
 		super(mysql);
-		
+
 	}
 
 	public Schedule scheduleRead(int id) {
 		Schedule sc = null;
 		try {
-    		sc = (Schedule) mysql.queryOne("select * from gl_schedule where id = ?", new BeanPropertyRowMapper<Schedule>(Schedule.class), new Object[] {id});
+			sc = (Schedule) mysql.queryOne("select * from gl_schedule where id = ?", new BeanPropertyRowMapper<Schedule>(Schedule.class), new Object[] {id});
 		}catch(Exception e) {
-    		return sc;
-    	}
+			return sc;
+		}
 		return sc;
 	}
-	}
+}
 

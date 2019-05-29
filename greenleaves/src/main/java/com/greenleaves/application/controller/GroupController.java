@@ -21,4 +21,13 @@ public class GroupController extends BaseController {
 		return g;
 	}
 	
+	public Group groupRead(String name) {
+		Group g = null;
+		try {
+			g = (Group) mysql.queryOne("select * from gl_group where name = ?", new BeanPropertyRowMapper<Group>(Group.class), new Object[] {name});
+		}catch(Exception e) {
+			return g;
+		}
+		return g;
+	}
 }
