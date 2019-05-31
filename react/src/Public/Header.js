@@ -1,9 +1,6 @@
 import React from "react";
 
-import Config from '../config';
 import './Header.css';
-import Utils from "../utils";
-import Cookie from '../cookie';
 
 class Header extends React.Component {
 
