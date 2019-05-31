@@ -13,11 +13,20 @@ class List extends React.Component {
         document.title = 'Reader List';
         let $this = this;
         $this.state = {
-            member: {groupObj: {}}
+            member: {groupObj: {}},
+            list: []
         };
         Utils.checkMember(function(res){
             $this.setState({
                 member: res
+            });
+            let postdata = {};
+            postdata.cookie = Utils.getLoginCookie();
+            postdata.group = 'reader';
+            Utils.request(Config.requestUrl+Utils.requestUrl('member-list'), Utils.jsonToForm(postdata), function(res){
+                $this.setState({
+                    list: res
+                });
             });
         });
     }
@@ -32,33 +41,27 @@ class List extends React.Component {
                 <div className="wrap">
 
                     <table className="table table-hover">
-                        <thead>
+                        <thead className="thead-dark">
                         <tr>
-                            <th>Report title</th>
-                            <th>Student name</th>
-                            <th>Supervisor name</th>
-                            <th>Choice</th>
+                            <th>Member name</th>
+                            <th>Real name</th>
+                            <th>Email address</th>
+                            <th>Operation</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Summer vibe</td>
-                            <td>Meow</td>
-                            <td>Illidan Stormrage</td>
-                            <td><button className="button" ><span>Download </span></button></td>
-                        </tr>
-                        <tr>
-                            <td>a</td>
-                            <td>b</td>
-                            <td>c</td>
-                            <td><button className="button" ><span>Download </span></button></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td><button className="button" ><span>Download </span></button></td>
-                        </tr>
+                        {this.state.list.map((l, k)=>{
+                            return <tr key={k}>
+                                <td>{l.membername}</td>
+                                <td>{l.realName}</td>
+                                <td>{l.email}</td>
+                                <td>
+                                    {member.group===1?
+                                        <a href={Utils.url('member-edit-'+l.id)}>Edit</a>
+                                        :null}
+                                </td>
+                            </tr>
+                        })}
                         </tbody>
                     </table>
                 </div>

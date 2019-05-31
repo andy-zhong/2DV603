@@ -82,6 +82,10 @@ a:hover {
     padding: 10px;
     color: #abb4be;
 }
+.sider .menu .item .subMenu .subItem.active {
+    color: #3498db;
+    font-weight: bold;
+}
 .sider .menu .item .subMenu .subItem:hover {
     background: #212F3D;
 }

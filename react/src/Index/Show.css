@@ -1,1 +1,19 @@
-div {}
+.index-show h4 {
+    margin-bottom: 40px;
+}
+
+.index-show .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.index-show .btn {
+    width: 180px;
+    margin-top: 20px;
+    margin-left: 0;
+    font-size: 14px;
+}
