@@ -1,0 +1,15 @@
+.schedule-edit .item {
+    padding: 10px;
+    width: 500px;
+}
+.schedule-edit .item .title {
+    font-weight: bold;
+    padding: 0 10px;
+}
+.schedule-edit .item .value {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+.schedule-edit .btn {
+    margin-left: 20px;
+}

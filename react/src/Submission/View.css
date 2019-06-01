@@ -1,0 +1,42 @@
+.feedback-box {
+    margin-top: 15px;
+}
+.feedback-box .title {
+    margin: 40px 10px 10px;
+    font-size: 20px;
+}
+.feedback-box .form-control {
+    margin-bottom: 10px;
+}
+.feedback-box textarea {
+    height: 200px !important;
+}
+.feedback-box .btn {
+    margin-left: 0;
+}
+
+.feedback-list {
+    margin-top: 15px;
+}
+.feedback-list .title {
+    margin: 40px 10px 10px;
+    font-size: 20px;
+}
+.feedback-list .item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+.feedback-list .item .info {
+    display: flex;
+    align-items: center;
+}
+.feedback-list .item .info .fa-user {
+    padding-right: 5px;
+}
+.feedback-list .item .info .score {
+    padding-left: 20px;
+    font-weight: bold;
+}
+.feedback-list .item .content {
+    padding: 10px 18px 0;
+}
