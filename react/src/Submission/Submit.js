@@ -23,7 +23,8 @@ class Submit extends React.Component {
             file: null,
             member: {groupObj: {}},
             list: [],
-            schedule: {}
+            schedule: {},
+            agreement: false
         };
         if(type==='plan' && props.location.search===''){
             Utils.alert('Please select a supervisor', function(){
@@ -59,7 +60,22 @@ class Submit extends React.Component {
         this.submit = this.submit.bind(this);
     }
 
+    agreementChange(){
+        let agree = !this.state.agreement;
+        this.setState({
+            agreement: agree
+        })
+    }
+
     submit() {
+        if(!this.state.agreement){
+            Utils.alert('Please select the agreement first')
+            return false;
+        }
+        if(!this.state.file){
+            Utils.alert('Please the file you want to submit')
+            return false;
+        }
         confirmAlert({
             title: 'Confirm',
             message: 'Confirm to submit the file?',
@@ -150,6 +166,10 @@ class Submit extends React.Component {
                     {schedule.endTime<(new Date().getTime()/1000) || schedule.startTime>(new Date().getTime()/1000) ||
                     (list.length>0 && list[0].submitTime>=schedule.startTime && list[0].submitTime<=schedule.endTime) ? null :
                         <div>
+                            <div className="agreement">
+                                <input type="checkbox" checked={this.state.agreement} onChange={this.agreementChange.bind(this)} /> I declare that:
+                                <p>This assignment is entirely my own work, except where I have included fully-documented references to the work of others</p>
+                            </div>
                             <input type="file" className="form-control" placeholder="Choose your file" name="file" onChange={this.fileSelect} />
                             <button className="btn btn-primary" onClick={this.submit}>Submit</button>
                         </div>
