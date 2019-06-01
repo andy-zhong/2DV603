@@ -7,6 +7,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -152,7 +153,12 @@ public class SubmissionService {
 	
 	
 	public List<Submission> getListByTypeStudent(int type, int id) {
-		List<Submission> submissions = sd.submissionFind("select * from gl_submission where `type` = ? and `mid` = ? order by submitTime desc", new Object[] {type, id});
+		List<Submission> submissions = new ArrayList<Submission>();
+		if(type==3) {
+			submissions = sd.submissionFind("select * from gl_submission where `type` = ? order by submitTime desc", new Object[] {type});
+		}else{
+			submissions = sd.submissionFind("select * from gl_submission where `type` = ? and `mid` = ? order by submitTime desc", new Object[] {type, id});
+		}
 		return submissions;
 	}
 	

@@ -70,10 +70,13 @@ public class SubmissionController {
 		SubmissionType st = ss.readSubmissionTypeByType(type);
 		String group = m.getGroupObj().getType();
 		List<Submission> list = new ArrayList<Submission>();
+		// Coordinator and reader can see all the types
 		if(group.equalsIgnoreCase("coordinator") || group.equalsIgnoreCase("reader")) {
 			list = ss.getListByType(st.getId());
+		// Student can see their own submissions and others' report
 		}else if(group.equalsIgnoreCase("student")) {
 			list = ss.getListByTypeStudent(st.getId(), m.getId());
+		// Supervisor just can see their own students' submissions
 		}else if(group.equalsIgnoreCase("supervisor")) {
 			list = ss.getListByTypeSupervisor(st.getId(), m.getId());
 		}
@@ -88,7 +91,8 @@ public class SubmissionController {
 		try {
 			int submissionId = Integer.parseInt(id);
 			Submission submission = ss.readById(submissionId);
-			if(m.getGroupObj().getType().equalsIgnoreCase("student") && submission.getMid()!=m.getId())
+			// All members can see the report, but student cannot see others
+			if(m.getGroupObj().getType().equalsIgnoreCase("student") && submission.getMid()!=m.getId() && submission.getType()!=3)
 				return Response.fail("Access denied");
 			return Response.success(submission);
 		}catch(Exception e) {
@@ -101,6 +105,7 @@ public class SubmissionController {
     public Map<String, Object> listOfStudent(String cookie, String type) {
 		Member m = ms.readByCookie(cookie);
 		if(m==null) return Response.quit();
+		// Just student and coordinator can use the function to see their own submissions
 		if(!m.getGroupObj().getType().equalsIgnoreCase("student") && 
 				!m.getGroupObj().getType().equalsIgnoreCase("coordinator")) 
 			return Response.fail("Access denied");
@@ -122,6 +127,7 @@ public class SubmissionController {
     public Map<String, Object> listByStudent(String cookie, String id) {
 		Member m = ms.readByCookie(cookie);
 		if(m==null) return Response.quit();
+		// Just supervisor and coordinator can use the function, to see all submissions of one student
 		if(!m.getGroupObj().getType().equalsIgnoreCase("supervisor") && 
 				!m.getGroupObj().getType().equalsIgnoreCase("coordinator")) 
 			return Response.fail("Access denied");

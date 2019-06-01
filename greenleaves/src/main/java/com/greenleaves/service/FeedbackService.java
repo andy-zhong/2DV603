@@ -37,17 +37,19 @@ public class FeedbackService {
 		if(submission.getMid()==member.getId()) return "You cannot review on your own submission";
 		SubmissionType st = ss.readSubmissionTypeById(submission.getType());
 		// Check Permission
+		// Just coordinator can feedback description
 		if(
 			st.getType().equalsIgnoreCase("description") && 
 			!member.getGroupObj().getType().equalsIgnoreCase("coordinator")
 		) {
 			return "Access denied";
 		}
+		// Coordinator can feedback all, supervisor just can feedback their own students' submissions
 		if(
 			st.getType().equalsIgnoreCase("plan") && 
-			!member.getGroupObj().getType().equalsIgnoreCase("coordinator") &&  
-			!member.getGroupObj().getType().equalsIgnoreCase("supervisor") && 
-			(member.getGroupObj().getType().equalsIgnoreCase("supervisor") && submission.getSid()!=member.getId())
+			!member.getGroupObj().getType().equalsIgnoreCase("coordinator") && (
+			!member.getGroupObj().getType().equalsIgnoreCase("supervisor") || 
+			(member.getGroupObj().getType().equalsIgnoreCase("supervisor") && submission.getSid()!=member.getId()))
 		) {
 			return "Access denied";
 		}
