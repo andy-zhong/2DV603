@@ -7,8 +7,9 @@ class Logout extends React.Component {
     constructor(props){
         super(props);
         this.clear();
-        alert("Logout successfully");
-        window.location.href = Utils.url('member-login');
+        Utils.alert("Logout successfully",function(){
+            window.location.href = Utils.url('member-login');
+        }, 1500);
     }
 
     clear(){

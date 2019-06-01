@@ -22,10 +22,11 @@ class Login extends React.Component {
     // 输入
     input(e){
         e.preventDefault();
+        let formData = this.state.formData;
         e = e.target;
-        this.state.formData[e.name] = e.value;
+        formData[e.name] = e.value;
         this.setState({
-            formData: this.state.formData
+            formData: formData
         });
     }
 
@@ -35,13 +36,14 @@ class Login extends React.Component {
         let postdata = this.state.formData;
         $this.setState({ disabled: true, submitText: 'Submitting' });
         postdata = Utils.jsonToForm(postdata);
-        Utils.request(Config.requestUrl+"member/login", postdata, function(data){
+        Utils.request(Config.requestUrl+Utils.requestUrl('member-login'), postdata, function(data){
             Cookie.save("loginCookie", data);
-            alert("Login successfully");
-            window.location.href = Utils.url("index-show");
+            Utils.alert("Login successfully",function(){
+                window.location.href = Utils.url("index-show");
+            }, 1500);
         }, function(msg){
             $this.setState({ disabled: false, submitText: 'Login' });
-            alert(msg);
+            Utils.alert(msg);
         });
     }
 
@@ -49,7 +51,7 @@ class Login extends React.Component {
         let state = this.state;
         return (
             <div className="main">
-                <img src={require('../Asset/Img/logo.png')} className="logo" />
+                <img src={require('../Asset/Img/logo.png')} alt="" className="logo" />
                 <div className="box">
                     <div className="row">
                         <div className="col-lg-4">Member Name</div>

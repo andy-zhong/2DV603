@@ -13,11 +13,20 @@ class List extends React.Component {
         document.title = 'Student List';
         let $this = this;
         $this.state = {
-            member: {groupObj: {}}
+            member: {groupObj: {}},
+            list: []
         };
         Utils.checkMember(function(res){
             $this.setState({
                 member: res
+            });
+            let postdata = {};
+            postdata.cookie = Utils.getLoginCookie();
+            postdata.group = 'student';
+            Utils.request(Config.requestUrl+Utils.requestUrl('member-list'), Utils.jsonToForm(postdata), function(res){
+                $this.setState({
+                    list: res
+                });
             });
         });
     }
@@ -32,29 +41,30 @@ class List extends React.Component {
                 <div className="wrap">
 
                     <table className="table table-hover">
-                        <thead>
-                        <tr>
-                            <th>Student name</th>
-                            <th>Email address</th>
-                            <th>Submission</th>
-                        </tr>
+                        <thead className="thead-dark">
+                            <tr>
+                                <th>Member name</th>
+                                <th>Real name</th>
+                                <th>Email address</th>
+                                <th>Operation</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Meow Meow</td>
-                            <td>aa111zz@student.lnu.se</td>
-                            <td>abc</td>
-                        </tr>
-                        <tr>
-                            <td>abc</td>
-                            <td>abc</td>
-                            <td>abc</td>
-                        </tr>
-                        <tr>
-                            <td>abc</td>
-                            <td>abc</td>
-                            <td>abc</td>
-                        </tr>
+                            {this.state.list.map((l, k)=>{
+                                return <tr key={k}>
+                                    <td>{l.membername}</td>
+                                    <td>{l.realName}</td>
+                                    <td>{l.email}</td>
+                                    <td>
+                                        <a href={Utils.url('student-submission-'+l.id)}>Submissions</a>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        {member.group===1?
+                                            <a href={Utils.url('member-edit-'+l.id)}>Edit</a>
+                                            :null}
+
+                                    </td>
+                                </tr>
+                            })}
                         </tbody>
                     </table>
                 </div>

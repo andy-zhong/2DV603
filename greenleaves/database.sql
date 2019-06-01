@@ -10,10 +10,28 @@ Target Server Type    : MYSQL
 Target Server Version : 50635
 File Encoding         : 65001
 
-Date: 2019-05-28 19:11:41
+Date: 2019-06-01 21:25:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `gl_feedback`
+-- ----------------------------
+DROP TABLE IF EXISTS `gl_feedback`;
+CREATE TABLE `gl_feedback` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
+  `mid` int(9) NOT NULL,
+  `sid` int(9) NOT NULL,
+  `content` text NOT NULL,
+  `score` int(1) NOT NULL,
+  `createTime` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of gl_feedback
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `gl_group`
@@ -40,28 +58,51 @@ INSERT INTO `gl_group` VALUES ('4', 'Reader', 'reader');
 DROP TABLE IF EXISTS `gl_member`;
 CREATE TABLE `gl_member` (
   `id` int(9) NOT NULL AUTO_INCREMENT,
+  `sid` int(9) NOT NULL DEFAULT '0',
   `membername` varchar(18) NOT NULL,
   `password` varchar(32) NOT NULL,
   `group` int(3) NOT NULL,
   `realName` varchar(20) NOT NULL,
-  `loginTime` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `loginTime` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of gl_member
 -- ----------------------------
-INSERT INTO `gl_member` VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '1', 'God', '1558010520');
-INSERT INTO `gl_member` VALUES ('2', 'supervisor1', 'e10adc3949ba59abbe56e057f20f883e', '2', 'Supervisor1', '0');
-INSERT INTO `gl_member` VALUES ('3', 'supervisor2', 'e10adc3949ba59abbe56e057f20f883e', '2', 'Supervisor2', '0');
-INSERT INTO `gl_member` VALUES ('4', 'supervisor3', 'e10adc3949ba59abbe56e057f20f883e', '2', 'Supervisor2', '0');
-INSERT INTO `gl_member` VALUES ('5', 'reader1', 'e10adc3949ba59abbe56e057f20f883e', '4', 'Reader1', '0');
-INSERT INTO `gl_member` VALUES ('6', 'reader2', 'e10adc3949ba59abbe56e057f20f883e', '4', 'Reader2', '0');
-INSERT INTO `gl_member` VALUES ('7', 'reader3', 'e10adc3949ba59abbe56e057f20f883e', '4', 'Reader3', '0');
-INSERT INTO `gl_member` VALUES ('8', 'reader4', 'e10adc3949ba59abbe56e057f20f883e', '4', 'Reader4', '0');
-INSERT INTO `gl_member` VALUES ('9', 'jz222cv', 'e10adc3949ba59abbe56e057f20f883e', '3', 'Jinzhe Zhao', '1558165416');
-INSERT INTO `gl_member` VALUES ('10', 'andy-zhong', 'e10adc3949ba59abbe56e057f20f883e', '3', 'Shishengxiong Zhong', '1555777539');
-INSERT INTO `gl_member` VALUES ('11', 'sz222cu', 'e10adc3949ba59abbe56e057f20f883e', '3', 'Hailing Zhang', '1555777597');
+INSERT INTO `gl_member` VALUES ('1', '0', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '1', 'God', '111@qq.com', '1559388955');
+INSERT INTO `gl_member` VALUES ('2', '0', 'supervisor1', 'e10adc3949ba59abbe56e057f20f883e', '2', 'Supervisor1', '', '0');
+INSERT INTO `gl_member` VALUES ('3', '0', 'supervisor2', 'e10adc3949ba59abbe56e057f20f883e', '2', 'Supervisor2', '', '1559311515');
+INSERT INTO `gl_member` VALUES ('4', '0', 'supervisor3', 'e10adc3949ba59abbe56e057f20f883e', '2', 'Supervisor2', '', '1559311095');
+INSERT INTO `gl_member` VALUES ('5', '0', 'reader1', 'e10adc3949ba59abbe56e057f20f883e', '4', 'Reader1', '', '1559311443');
+INSERT INTO `gl_member` VALUES ('6', '0', 'reader2', 'e10adc3949ba59abbe56e057f20f883e', '4', 'Reader2', '', '1559311469');
+INSERT INTO `gl_member` VALUES ('7', '0', 'reader3', 'e10adc3949ba59abbe56e057f20f883e', '4', 'Reader3', '', '0');
+INSERT INTO `gl_member` VALUES ('8', '0', 'reader4', 'e10adc3949ba59abbe56e057f20f883e', '4', 'Reader4', '', '0');
+INSERT INTO `gl_member` VALUES ('9', '4', 'jz222cv', 'ab71ee15ff881e571defbaffb2b9b0fa', '3', 'Jinzhe Zhao', 'jz222cv@student.lnu.se', '1559389727');
+INSERT INTO `gl_member` VALUES ('10', '0', 'andy-zhong', 'e10adc3949ba59abbe56e057f20f883e', '3', 'Shishengxiong Zhong', '1111@qq.com', '1559310682');
+INSERT INTO `gl_member` VALUES ('11', '0', 'sz222cu', 'e10adc3949ba59abbe56e057f20f883e', '3', 'Hailing Zhang', '', '1555777597');
+INSERT INTO `gl_member` VALUES ('12', '0', 'jz222cv2', 'ab71ee15ff881e571defbaffb2b9b0fa', '3', 'Jinzhe Zhao', 'jz222cv2@student.lnu.se', '1559393735');
+
+-- ----------------------------
+-- Table structure for `gl_schedule`
+-- ----------------------------
+DROP TABLE IF EXISTS `gl_schedule`;
+CREATE TABLE `gl_schedule` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `type` varchar(30) NOT NULL,
+  `startTime` int(11) NOT NULL,
+  `endTime` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of gl_schedule
+-- ----------------------------
+INSERT INTO `gl_schedule` VALUES ('1', 'Project description\r\n2', 'SubmitDescription', '1559222961', '1559522961');
+INSERT INTO `gl_schedule` VALUES ('2', 'Project Plan', 'SubmitPlan', '1556717361', '1561783961');
+INSERT INTO `gl_schedule` VALUES ('3', 'Project Report', 'SubmitReport', '1559222960', '1559623999');
 
 -- ----------------------------
 -- Table structure for `gl_submission`
@@ -77,14 +118,11 @@ CREATE TABLE `gl_submission` (
   `gradeTime` int(11) NOT NULL,
   `score` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of gl_submission
 -- ----------------------------
-INSERT INTO `gl_submission` VALUES ('6', '9', '0', '1', 'upload/125/Assignment1.pdf', '1558175412', '0', '3');
-INSERT INTO `gl_submission` VALUES ('10', '9', '3', '2', 'upload/125/1558184820#Assignment1.pdf', '1558184820', '0', '2');
-INSERT INTO `gl_submission` VALUES ('11', '9', '3', '3', 'upload/125/1558185363#Assignment2.pdf', '1558185363', '0', '0');
 
 -- ----------------------------
 -- Table structure for `gl_submission_type`
@@ -100,23 +138,6 @@ CREATE TABLE `gl_submission_type` (
 -- ----------------------------
 -- Records of gl_submission_type
 -- ----------------------------
-INSERT INTO `gl_submission_type` VALUES ('1', 'Description', 'description');
-INSERT INTO `gl_submission_type` VALUES ('2', 'Project Plan', 'projectPlan');
-INSERT INTO `gl_submission_type` VALUES ('3', 'Project Report', 'projectReport');
-
--- ----------------------------
--- Table structure for `gl_schedule`
--- ----------------------------
-DROP TABLE IF EXISTS `gl_schedule`;
-CREATE TABLE `gl_schedule` (
-  `id` int(9) NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) NOT NULL,
-  `startTime` date NOT NULL,
-  `endTime` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of gl_schedule
--- ----------------------------
-INSERT INTO `gl_schedule` VALUES ('1', 'test', '2019-05-26', '2019-05-28');
+INSERT INTO `gl_submission_type` VALUES ('1', 'Project Description', 'description');
+INSERT INTO `gl_submission_type` VALUES ('2', 'Project Plan', 'plan');
+INSERT INTO `gl_submission_type` VALUES ('3', 'Project Report', 'report');
